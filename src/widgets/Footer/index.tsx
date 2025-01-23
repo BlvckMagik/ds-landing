@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-around gap-12 border-t-2 border-t-gray-200 bg-white px-8 py-16 sm:flex-row sm:gap-0 lg:p-16">
+    <footer className="flex flex-col justify-around gap-12 border-t-2 border-t-gray-200 bg-gray-50 px-8 py-16 sm:flex-row sm:gap-0 lg:p-16 dark:border-t-gray-800 dark:bg-gray-900">
       <div className="h-8 w-auto font-DelaGothicOne text-2xl text-gray-900">
         Drako Schule
       </div>

@@ -8,15 +8,26 @@ import {
 } from "@headlessui/react";
 import { AnimatePresence, easeOut, motion } from "framer-motion";
 
-const Disclosure: React.FC<{ title: string; content: string }> = ({
-  title,
-  content,
-}) => {
+const Disclosure: React.FC<{
+  title: string;
+  content: string;
+  setIsHintUsed: () => void;
+}> = ({ title, content, setIsHintUsed }) => {
+  const onClick = () => {
+    console.log("Hint used");
+
+    setIsHintUsed();
+    localStorage.setItem("isHintUsed", "true");
+  };
   return (
-    <DisclosureComponent as="div" className="w-full max-w-md py-4">
+    <DisclosureComponent
+      as="div"
+      className="relative w-full max-w-md py-4"
+      onClick={() => !localStorage.getItem("isHintUsed") && onClick()}
+    >
       {({ open }) => (
         <>
-          <DisclosureButton className="w-full border-b pb-2 text-center">
+          <DisclosureButton className="w-full border-b pb-2 text-center font-semibold">
             {title}
           </DisclosureButton>
           <div className="overflow-hidden py-2">

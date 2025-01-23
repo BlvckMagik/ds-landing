@@ -25,17 +25,4 @@ export const faqItems = [
     title: "What do you call a pile of cats?",
     content: "A meowtain.",
   },
-  {
-    title: "What do you call a factory that makes okay products?",
-    content: "A satisfactory.",
-  },
-  {
-    title: "What do you call a fake noodle?",
-    content: "An impasta.",
-  },
-
-  {
-    title: "What do you call a cow with two legs?",
-    content: "A mooch.",
-  },
 ];

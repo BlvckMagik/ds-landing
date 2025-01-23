@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  darkMode: "selector",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,6 +12,9 @@ export default {
     extend: {
       width: {
         "48vw": "48vw",
+      },
+      inset: {
+        hint: "-30px",
       },
       fontFamily: {
         DelaGothicOne: ["Dela Gothic One", "serif"],
