@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import withMT from "@material-tailwind/react/utils/withMT";
 
-export default {
+module.exports = withMT({
   darkMode: "selector",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,12 +10,6 @@ export default {
   ],
   theme: {
     extend: {
-      width: {
-        "48vw": "48vw",
-      },
-      inset: {
-        hint: "-30px",
-      },
       fontFamily: {
         DelaGothicOne: ["Dela Gothic One", "serif"],
         Montserrat: ["Montserrat", "serif"],
@@ -30,4 +24,4 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config;
+});

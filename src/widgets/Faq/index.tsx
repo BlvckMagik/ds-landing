@@ -30,7 +30,7 @@ const Faq = () => {
               setIsHintUsed={() => setIsHintUsed(true)}
             />
             {i === 0 && !isHintUsed && (
-              <div className="absolute left-0 top-hint flex w-fit items-center justify-center gap-1 rounded-full bg-greenLight px-6 py-1.5 text-sm font-bold text-greenDark">
+              <div className="absolute left-0 top-[-30px] flex w-fit items-center justify-center gap-1 rounded-full bg-greenLight px-6 py-1.5 text-sm font-bold text-greenDark">
                 Click me to see answer
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
