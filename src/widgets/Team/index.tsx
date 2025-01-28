@@ -19,7 +19,7 @@ const Team: React.FC = () => {
             visible: {
               opacity: 1,
               transition: {
-                delay: 0.6,
+                delay: 0.2,
                 staggerChildren: 0.1, // Час між анімацією кожної літери
               },
             },

@@ -24,7 +24,7 @@
   color: rgb(17, 24, 39);
 }
 
-html.dark * {
+.dark * {
   color: white;
 }
 
@@ -40,4 +40,8 @@ body {
 
 #carousel > div {
   height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
 }

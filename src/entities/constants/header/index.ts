@@ -5,7 +5,10 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
 } from "@heroicons/react/24/outline";
-import { PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
+import {
+  ChatBubbleOvalLeftIcon,
+  PlayCircleIcon,
+} from "@heroicons/react/20/solid";
 
 export const products = [
   {
@@ -42,5 +45,5 @@ export const products = [
 
 export const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
+  { name: "Записатись", href: "#applyForm", icon: ChatBubbleOvalLeftIcon },
 ];

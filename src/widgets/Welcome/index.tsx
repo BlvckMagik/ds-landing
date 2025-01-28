@@ -15,8 +15,7 @@ const Welcome: React.FC = () => {
             visible: {
               opacity: 1,
               transition: {
-                delay: 0.3,
-                staggerChildren: 0.05, // Час між анімацією кожної літери
+                delay: 0.2,
               },
             },
           }}
@@ -25,17 +24,17 @@ const Welcome: React.FC = () => {
           className="flex w-fit grow flex-col items-center justify-center gap-6 lg:items-start"
         >
           <div className="w-fit font-bold text-greenDark">
-            E-COURSE PLATFORM
+            Репетиторський центр онлайн
           </div>
           <div className="w-fit text-center font-DelaGothicOne text-6xl font-bold text-gray-900 lg:w-10/12 lg:text-left">
-            Learning and teaching online, made easy.
+            Ми - це місце для цікавого вивчення іноземних мов
           </div>
           <div className="w-4/5 text-center text-lg text-grayDark lg:text-left">
-            Practice your English and learn new things with the platform.
+            Практикуйте іноземні мови та вивчайте нові речі разом з платформою.
           </div>
-          <div className="w-fit rounded-full bg-greenLight px-6 py-3.5 text-base font-bold text-greenDark">
+          {/* <div className="w-fit rounded-full bg-greenLight px-6 py-3.5 text-base font-bold text-greenDark">
             About platform
-          </div>
+          </div> */}
         </motion.div>
         <Image
           width={933}
