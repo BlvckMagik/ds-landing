@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import FormBannerMobile from "@/public/home-page/form-mob.webp";
+import FormBannerMobile from "@/public/career/teather-apply-pic-mob.webp";
 import {
   Button,
   Description,
@@ -17,15 +17,18 @@ import {
   Select,
   Textarea,
 } from "@headlessui/react";
-import FormBanner from "@/public/home-page/form.webp";
+import FormBanner from "@/public/career/teather-apply-pic.webp";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
   subjectsList,
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
+import FileInputButton from "@/src/components/FileInputButton";
 
-const ApplyForm: React.FC = () => {
+const TeacherApplyForm: React.FC = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -51,7 +54,7 @@ const ApplyForm: React.FC = () => {
     setPhoneError(null);
 
     const message = `
-      <b>Новий запис на урок:</b>
+      <b>Новий відгук на вакансію:</b>
   - Ім'я: ${formProps.name}
   - Телефон: ${formProps.number}
   - Предмет: ${formProps.subject}
@@ -69,7 +72,30 @@ const ApplyForm: React.FC = () => {
         },
       );
 
-      if (response.status === 200) {
+      let response2 = null;
+      if (selectedFile) {
+        const documentFormData = new FormData();
+        documentFormData.append(
+          "chat_id",
+          process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || "",
+        );
+        documentFormData.append("document", selectedFile);
+
+        response2 = await axios.post(
+          `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TELEGRAM_BOT_ID}/sendDocument`,
+          documentFormData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          },
+        );
+      }
+
+      if (
+        response.status === 200 &&
+        (response2?.status === 200 || response2 === null)
+      ) {
         setFormStatus("success");
         formRef.current?.reset();
       } else {
@@ -120,7 +146,7 @@ const ApplyForm: React.FC = () => {
               {formStatus !== "success" ? (
                 <>
                   <Legend className="text-base/7 font-semibold dark:text-white">
-                    Записуйтесь на урок
+                    Подавай заявку на роботу викладачем
                   </Legend>
                   <Field>
                     <Label className="text-sm/6 font-medium dark:text-white">
@@ -193,6 +219,9 @@ const ApplyForm: React.FC = () => {
                       rows={3}
                     />
                   </Field>
+                  <Field>
+                    <FileInputButton onFileSelect={setSelectedFile} />
+                  </Field>
                   <Button
                     type="submit"
                     className="mx-auto block items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white"
@@ -257,4 +286,4 @@ const ApplyForm: React.FC = () => {
   );
 };
 
-export default ApplyForm;
+export default TeacherApplyForm;

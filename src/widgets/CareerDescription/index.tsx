@@ -3,7 +3,7 @@
 import CareerPost from "@/src/components/CareerPost";
 import { motion } from "framer-motion";
 
-const CareerDecription: React.FC = () => {
+const CareerDescription: React.FC = () => {
   return (
     <section className="bg-gray-50 p-8 md:p-14 lg:p-24 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-between lg:flex-row lg:items-start">
@@ -125,4 +125,4 @@ const CareerDecription: React.FC = () => {
   );
 };
 
-export default CareerDecription;
+export default CareerDescription;
