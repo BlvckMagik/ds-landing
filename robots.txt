@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Allow: /career
 
 Sitemap: https://www.drako-schule.com/sitemap.xml
