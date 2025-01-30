@@ -156,6 +156,7 @@ const TeacherApplyForm: React.FC = () => {
                     <Input
                       id="name"
                       name="name"
+                      autoComplete="name"
                       className="mt-3 block w-full rounded-lg border-none px-3 py-1.5 text-sm/6 focus:outline-none dark:bg-white/5 dark:text-white"
                       required
                     />
@@ -168,7 +169,9 @@ const TeacherApplyForm: React.FC = () => {
                     <Input
                       id="number"
                       name="number"
-                      placeholder="+380 XX XXX XX XX"
+                      type="tel"
+                      placeholder="380 XX XXX XX XX"
+                      autoComplete="tel"
                       className={`mt-3 block w-full rounded-lg border-none px-3 py-1.5 text-sm/6 focus:outline-none dark:bg-white/5 dark:text-white ${
                         phoneError ? "border-pink-500 text-pink-600" : ""
                       }`}
