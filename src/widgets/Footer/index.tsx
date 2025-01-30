@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="flex flex-col justify-around gap-12 border-t-2 border-t-gray-200 bg-gray-50 px-8 py-16 sm:flex-row sm:gap-0 lg:p-16 dark:border-t-gray-800 dark:bg-gray-900">
@@ -9,13 +11,13 @@ const Footer = () => {
       <div>
         <div className="mb-4 font-bold">Контакти:</div>
         <div className="flex flex-col gap-y-2.5">
-          <a
+          <Link
             href="https://www.instagram.com/drako_schule"
             target="_blank"
             rel="noopener noreferrer"
           >
             Instagram
-          </a>
+          </Link>
           <a
             href="https://t.me/drako_schule"
             target="_blank"
@@ -29,16 +31,16 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <div className="mb-4 font-bold">БлаБлабла:</div>
+        <div className="mb-4 font-bold">Додатково:</div>
         <div className="flex flex-col gap-y-2.5">
-          <a href="http://" target="_blank" rel="noopener noreferrer">
-            МяуМяуМяу
-          </a>
+          <Link href="career" rel="noopener noreferrer">
+            Пошук викладачів
+          </Link>
           <a href="http://" target="_blank" rel="noopener noreferrer">
             ГавГавгав
           </a>
           <a href="http://" target="_blank" rel="noopener noreferrer">
-            МуМуМу
+            мфумфумф
           </a>
         </div>
       </div>
