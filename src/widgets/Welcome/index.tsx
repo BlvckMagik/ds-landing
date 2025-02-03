@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Welcome: React.FC = () => {
   return (
-    <section className="bg-gray-50 p-12 lg:p-24 dark:bg-gray-900">
+    <section className="bg-gray-50 p-8 md:p-14 lg:p-24 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-between lg:flex-row">
         <motion.div
           variants={{
@@ -21,12 +21,12 @@ const Welcome: React.FC = () => {
           }}
           initial="hidden"
           animate="visible"
-          className="flex w-fit grow flex-col items-center justify-center gap-6 lg:items-start"
+          className="flex w-fit grow flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left"
         >
           <div className="w-fit font-bold text-greenDark">
             Репетиторський центр онлайн
           </div>
-          <div className="w-fit text-center font-DelaGothicOne text-6xl font-bold text-gray-900 lg:w-10/12 lg:text-left">
+          <div className="w-fit text-center font-DelaGothicOne text-4xl font-bold text-gray-900 lg:w-10/12 lg:text-left lg:text-6xl">
             Ми - це місце для цікавого вивчення іноземних мов
           </div>
           <div className="w-4/5 text-center text-lg text-grayDark lg:text-left">

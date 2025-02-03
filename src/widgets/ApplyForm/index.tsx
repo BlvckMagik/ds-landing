@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import { AxiosError } from "axios";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -23,9 +23,11 @@ import {
   subjectsList,
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
+import { apiInstance } from "@/src/entities/gateway";
 
 const ApplyForm: React.FC = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [errorText, setErrorText] = useState<string | null>(null);
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -50,34 +52,24 @@ const ApplyForm: React.FC = () => {
 
     setPhoneError(null);
 
-    const message = `
-      <b>Новий запис на урок:</b>
-  - Ім'я: ${formProps.name}
-  - Телефон: ${formProps.number}
-  - Предмет: ${formProps.subject}
-  - Додаткова інформація: ${formProps.description || "не вказано"}
-    `;
-
     try {
-      const response = await axios.post(
-        `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TELEGRAM_BOT_ID}/sendMessage`,
-        {
-          chat_id: process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID,
-          // chat_id: "336998130",
-          text: message,
-          parse_mode: "HTML",
-        },
-      );
+      const response = await apiInstance.post("/telegram/send-message", {
+        ...formProps,
+        type: "student",
+      });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         setFormStatus("success");
         formRef.current?.reset();
       } else {
         setFormStatus("error");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error sending message to Telegram:", error);
       setFormStatus("error");
+      if (error instanceof AxiosError) {
+        setErrorText(error.response?.data.message);
+      }
     }
   };
 
@@ -226,7 +218,9 @@ const ApplyForm: React.FC = () => {
                   </Button>
                   {formStatus === "error" && (
                     <p className="mt-4 text-center text-red-500">
-                      Сталася помилка. Спробуйте ще раз.
+                      {errorText
+                        ? errorText
+                        : "Сталася помилка. Спробуйте ще раз."}
                     </p>
                   )}
                 </>

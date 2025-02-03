@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import { AxiosError } from "axios";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -24,9 +24,11 @@ import {
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
 import FileInputButton from "@/src/components/FileInputButton";
+import { apiInstance } from "@/src/entities/gateway";
 
 const TeacherApplyForm: React.FC = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [errorText, setErrorText] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const [formStatus, setFormStatus] = useState<
@@ -53,36 +55,19 @@ const TeacherApplyForm: React.FC = () => {
 
     setPhoneError(null);
 
-    const message = `
-      <b>Новий відгук на вакансію:</b>
-  - Ім'я: ${formProps.name}
-  - Телефон: ${formProps.number}
-  - Предмет: ${formProps.subject}
-  - Додаткова інформація: ${formProps.description || "не вказано"}
-    `;
-
     try {
-      const response = await axios.post(
-        `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TELEGRAM_BOT_ID}/sendMessage`,
-        {
-          chat_id: process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID,
-          // chat_id: "336998130",
-          text: message,
-          parse_mode: "HTML",
-        },
-      );
+      const response = await apiInstance.post("/telegram/send-message", {
+        ...formProps,
+        type: "teacher",
+      });
 
       let response2 = null;
       if (selectedFile) {
         const documentFormData = new FormData();
-        documentFormData.append(
-          "chat_id",
-          process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || "",
-        );
         documentFormData.append("document", selectedFile);
 
-        response2 = await axios.post(
-          `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TELEGRAM_BOT_ID}/sendDocument`,
+        response2 = await apiInstance.post(
+          "/telegram/send-document",
           documentFormData,
           {
             headers: {
@@ -93,17 +78,20 @@ const TeacherApplyForm: React.FC = () => {
       }
 
       if (
-        response.status === 200 &&
-        (response2?.status === 200 || response2 === null)
+        response.status === 201 &&
+        (response2?.status === 201 || response2 === null)
       ) {
         setFormStatus("success");
         formRef.current?.reset();
       } else {
         setFormStatus("error");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error sending message to Telegram:", error);
       setFormStatus("error");
+      if (error instanceof AxiosError) {
+        setErrorText(error.response?.data.message);
+      }
     }
   };
 
@@ -255,7 +243,9 @@ const TeacherApplyForm: React.FC = () => {
                   </Button>
                   {formStatus === "error" && (
                     <p className="mt-4 text-center text-red-500">
-                      Сталася помилка. Спробуйте ще раз.
+                      {errorText
+                        ? errorText
+                        : "Сталася помилка. Спробуйте ще раз."}{" "}
                     </p>
                   )}
                 </>
