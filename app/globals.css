@@ -34,6 +34,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body,
+body * {
+  cursor:
+    url("../public/cursor_default.svg") 16 16,
+    auto !important;
+}
+
 #carousel path {
   color: white;
 }
