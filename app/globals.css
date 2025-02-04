@@ -37,7 +37,7 @@ body {
 body,
 body * {
   cursor:
-    url("../public/cursor_default.svg") 16 16,
+    url("/public/cursor_default.svg") 16 16,
     auto !important;
 }
 
