@@ -27,10 +27,10 @@ const Welcome: React.FC = () => {
             Репетиторський центр онлайн
           </div>
           <div className="w-fit text-center font-DelaGothicOne text-4xl font-bold text-gray-900 lg:w-10/12 lg:text-left lg:text-6xl">
-            Ми - це місце для цікавого вивчення іноземних мов
+            Ми - це онлайн простір для вивчення мов
           </div>
           <div className="w-4/5 text-center text-lg text-grayDark lg:text-left">
-            Практикуйте іноземні мови та вивчайте нові речі разом з платформою.
+            Практикуйте іноземні мови та вивчайте нові речі разом з нами.
           </div>
           {/* <div className="w-fit rounded-full bg-greenLight px-6 py-3.5 text-base font-bold text-greenDark">
             About platform
