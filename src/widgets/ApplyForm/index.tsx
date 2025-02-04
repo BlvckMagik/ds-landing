@@ -142,6 +142,7 @@ const ApplyForm: React.FC = () => {
                         phoneError ? "border-pink-500 text-pink-600" : ""
                       }`}
                       required
+                      suppressHydrationWarning
                     />
                     {phoneError && (
                       <p className="mt-2 max-w-96 text-sm text-pink-600">

@@ -11,7 +11,7 @@ import Image from "next/image";
 const Team: React.FC = () => {
   const [teamMemberIndex, setTeamMemberIndex] = useState(0);
   return (
-    <section className="bg-gray-50 p-12 lg:p-24 dark:bg-gray-900">
+    <section id="team" className="bg-gray-50 p-12 lg:p-24 dark:bg-gray-900">
       <motion.div className="flex flex-col items-center justify-between lg:flex-row">
         <motion.div
           variants={{
