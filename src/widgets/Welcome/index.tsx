@@ -23,7 +23,7 @@ const Welcome: React.FC = () => {
         animate="visible"
         className="flex flex-col items-center justify-between lg:flex-row"
       >
-        <div className="flex w-fit grow flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
+        <div className="flex w-full flex-col items-center justify-center gap-6 text-center lg:w-1/2 lg:items-start lg:text-left">
           <div className="w-fit font-bold text-greenDark">
             Репетиторський центр онлайн
           </div>
@@ -37,22 +37,28 @@ const Welcome: React.FC = () => {
             About platform
           </div> */}
         </div>
-        <Image
-          width={933}
-          className="relative left-24 hidden w-[48vw] lg:block"
-          height={601}
-          src={MainBanner}
-          alt="main banner"
-          loading="lazy"
-        />
-        <Image
-          width={335}
-          className="mt-6 block lg:hidden"
-          height={280}
-          src={MainBannerMobile}
-          alt="main banner mobile"
-          loading="lazy"
-        />
+        
+        <div className="relative hidden h-[601px] w-[48vw] lg:block">
+          <Image
+            priority
+            fill
+            className="relative left-24 object-contain"
+            src={MainBanner}
+            alt="main banner"
+            sizes="48vw"
+          />
+        </div>
+        
+        <div className="relative mt-6 block h-[280px] w-[335px] lg:hidden">
+          <Image
+            priority
+            fill
+            className="object-contain"
+            src={MainBannerMobile}
+            alt="main banner mobile"
+            sizes="335px"
+          />
+        </div>
       </motion.div>
     </section>
   );
