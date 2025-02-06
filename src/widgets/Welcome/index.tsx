@@ -8,21 +8,22 @@ import { motion } from "framer-motion";
 const Welcome: React.FC = () => {
   return (
     <section className="bg-gray-50 p-8 md:p-14 lg:p-24 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-between lg:flex-row">
-        <motion.div
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                delay: 0.2,
-              },
+      <motion.div
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              delay: 0,
+              duration: 0.5,
             },
-          }}
-          initial="hidden"
-          animate="visible"
-          className="flex w-fit grow flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left"
-        >
+          },
+        }}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col items-center justify-between lg:flex-row"
+      >
+        <div className="flex w-fit grow flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
           <div className="w-fit font-bold text-greenDark">
             Репетиторський центр онлайн
           </div>
@@ -35,13 +36,14 @@ const Welcome: React.FC = () => {
           {/* <div className="w-fit rounded-full bg-greenLight px-6 py-3.5 text-base font-bold text-greenDark">
             About platform
           </div> */}
-        </motion.div>
+        </div>
         <Image
           width={933}
           className="relative left-24 hidden w-[48vw] lg:block"
           height={601}
           src={MainBanner}
           alt="main banner"
+          loading="lazy"
         />
         <Image
           width={335}
@@ -49,8 +51,9 @@ const Welcome: React.FC = () => {
           height={280}
           src={MainBannerMobile}
           alt="main banner mobile"
+          loading="lazy"
         />
-      </div>
+      </motion.div>
     </section>
   );
 };

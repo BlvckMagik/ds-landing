@@ -1,5 +1,6 @@
 import AboutUs from "@/src/widgets/AboutUs";
 import ApplyForm from "@/src/widgets/ApplyForm";
+import Contacts from "@/src/widgets/Contacts";
 import Faq from "@/src/widgets/Faq";
 import Footer from "@/src/widgets/Footer";
 import Header from "@/src/widgets/Header";
@@ -16,6 +17,7 @@ export default function Home() {
       <Faq />
       <ApplyForm />
       <Footer />
+      <Contacts />
     </>
   );
 }
