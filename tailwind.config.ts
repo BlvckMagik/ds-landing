@@ -11,8 +11,10 @@ module.exports = withMT({
   theme: {
     extend: {
       fontFamily: {
-        DelaGothicOne: ["Dela Gothic One", "serif"],
-        Montserrat: ["Montserrat", "serif"],
+        DelaGothicOne: ["var(--font-dela-gothic-one)", "serif"],
+        Montserrat: ["var(--font-montserrat)", "serif"],
+        geistSans: ["var(--font-geist-sans)", "sans-serif"],
+        geistMono: ["var(--font-geist-mono)", "monospace"],
       },
       colors: {
         background: "var(--background)",
