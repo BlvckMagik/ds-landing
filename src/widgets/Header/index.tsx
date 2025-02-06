@@ -7,15 +7,17 @@ import {
   // Disclosure,
   // DisclosureButton,
   // DisclosurePanel,
-  Field,
-  Label,
   // Popover,
   // PopoverButton,
   PopoverGroup,
   // PopoverPanel,
-  Switch,
 } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  SunIcon,
+  MoonIcon,
+} from "@heroicons/react/24/outline";
 // import { ChevronDownIcon } from "@heroicons/react/20/solid";
 // import { callsToAction, products } from "@/src/entities/constants/header";
 import Link from "next/link";
@@ -49,10 +51,10 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="border-b-2 border-b-gray-200 bg-white dark:border-b-gray-800 dark:bg-gray-900 dark:bg-opacity-95">
+    <header className="border-b-2 border-b-gray-200 bg-white px-8 md:px-14 lg:px-24 dark:border-b-gray-800 dark:bg-gray-900 dark:bg-opacity-95">
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex items-center justify-between px-0 py-6"
       >
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -155,18 +157,17 @@ const Header = () => {
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Field className="flex items-center gap-x-4">
-            <Label>LIght</Label>
-
-            <Switch
-              checked={isDarkModeEnabled}
-              onChange={onThemeChange}
-              className="group inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition data-[checked]:bg-blue-600"
-            >
-              <span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
-            </Switch>
-            <Label>Dark</Label>
-          </Field>
+          {isDarkModeEnabled ? (
+            <SunIcon
+              className="size-6 cursor-pointer"
+              onClick={onThemeChange}
+            />
+          ) : (
+            <MoonIcon
+              className="size-6 cursor-pointer"
+              onClick={onThemeChange}
+            />
+          )}
         </div>
       </nav>
       <Dialog
@@ -175,7 +176,7 @@ const Header = () => {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900">
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-8 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Drako Schule</span>
@@ -183,6 +184,17 @@ const Header = () => {
                 Drako Schule
               </span>
             </Link>
+            {isDarkModeEnabled ? (
+              <SunIcon
+                className="size-6 cursor-pointer"
+                onClick={onThemeChange}
+              />
+            ) : (
+              <MoonIcon
+                className="size-6 cursor-pointer"
+                onClick={onThemeChange}
+              />
+            )}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -244,18 +256,6 @@ const Header = () => {
                 >
                   Записатись
                 </a>
-                <Field className="flex items-center gap-x-4 py-2">
-                  <Label>LIght</Label>
-
-                  <Switch
-                    checked={isDarkModeEnabled}
-                    onChange={onThemeChange}
-                    className="group inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition data-[checked]:bg-blue-600"
-                  >
-                    <span className="size-4 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-6" />
-                  </Switch>
-                  <Label>Dark</Label>
-                </Field>
               </div>
             </div>
           </div>
