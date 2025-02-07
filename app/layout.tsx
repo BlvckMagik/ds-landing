@@ -62,7 +62,7 @@ export default function RootLayout({
       <meta property="og:url" content="https://ds-landing-weld.vercel.app/" />
       <meta
         property="og:image"
-        content="https://res.cloudinary.com/di1lzfsaa/image/upload/v1738928586/drako-schule-og:image.jpg"
+        content="https://res.cloudinary.com/di1lzfsaa/image/upload/v1738929349/drako-schule-og:image.jpg"
       />
       <meta property="og:image:alt" content="Drako Schule banner" />
       <meta property="og:image:width" content="1200" />
