@@ -53,11 +53,11 @@ export default function RootLayout({
     <html lang="uk">
       <meta
         property="og:title"
-        content="Drako Schule | Сучасна освіта для майбутнього"
+        content="Drako Schule | Сучасний простір для вивчення мов"
       />
       <meta
         property="og:description"
-        content="Drako Schule — це інноваційна школа, де кожен учень розкриває свій потенціал. Ми пропонуємо якісні заняття, сучасні методи навчання та індивідуальний підхід до кожного. Приєднуйтесь до нас, щоб створити разом майбутнє!"
+        content="Drako Schule — це місце, де навчання перетворюється на казку! Ми пропонуємо якісні заняття, цікаву подачу матеріалу та індивідуальний підхід до кожного. Приєднуйтесь до нас та зануртесь у Всесвіт драконів!"
       />
       <meta property="og:url" content="https://ds-landing-weld.vercel.app/" />
       <meta
@@ -68,7 +68,7 @@ export default function RootLayout({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/jpeg" />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
       <meta property="og:site_name" content="Drako Schule" />
       <meta property="og:image:alt" content="Опис зображення" />
 
