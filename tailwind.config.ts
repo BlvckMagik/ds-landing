@@ -19,6 +19,7 @@ module.exports = withMT({
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        orangeDark: "#da6a00",
         greenDark: "#14471E",
         greenLight: "#68904DB3",
         grayDark: "#757575",

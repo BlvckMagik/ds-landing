@@ -8,7 +8,7 @@ const AboutUs: React.FC = () => {
       <h1 className="mb-16 w-full text-center font-DelaGothicOne text-6xl font-bold text-gray-900">
         Про нас
       </h1>
-      <div className="flex flex-col items-center justify-between gap-16 lg:flex-row">
+      <div className="flex flex-col items-center justify-between gap-16 lg:flex-row lg:items-start">
         <motion.div
           variants={{
             hidden: { opacity: 0 },
@@ -21,7 +21,7 @@ const AboutUs: React.FC = () => {
           }}
           initial="hidden"
           animate="visible"
-          className="flex w-fit grow flex-col justify-center gap-6 text-center lg:items-start lg:text-left"
+          className="flex w-fit grow flex-col justify-center gap-6 text-center lg:text-left"
         >
           <div className="flex flex-col gap-4 text-center text-lg lg:text-left">
             <p>
