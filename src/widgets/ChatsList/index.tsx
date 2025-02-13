@@ -13,7 +13,7 @@ interface ChatData {
   firstName: string;
   lastName: string;
   username: string;
-  updatedAt: Date;
+  updatedAt: string;
 }
 
 const ChatsList = () => {
@@ -51,7 +51,10 @@ const ChatsList = () => {
       </h1>
       <div className="relative grid grid-cols-1 place-items-center gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-10">
         {chatsData
-          .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+          .sort(
+            (a, b) =>
+              new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+          )
           .map((chat) => (
             <Link
               href={`/admin/chats/${chat.userId}`}
