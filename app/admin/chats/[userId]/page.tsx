@@ -6,17 +6,17 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     userId: string;
-  };
+  }>;
 }
 
 export default async function ChatPage({ params }: PageProps) {
-  const { userId } = params;
+  const { userId } = await params;
 
   const response = await apiInstance.get(`/chat/${userId}`);
-  const userCookies = cookies();
-  const role = (await userCookies).get("role");
+  const userCookies = await cookies();
+  const role = userCookies.get("role");
 
   if (role?.value !== "admin") {
     redirect("/404");
