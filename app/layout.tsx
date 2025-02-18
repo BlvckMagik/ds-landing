@@ -8,6 +8,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import { cookies } from "next/headers";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -44,13 +45,16 @@ export const metadata: Metadata = {
     "Drako Schule — це місце, де навчання перетворюється на казку! Ми пропонуємо якісні заняття, цікаву подачу матеріалу та індивідуальний підхід до кожного. Приєднуйтесь до нас та зануртесь у Всесвіт драконів!",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const userCookies = await cookies();
+  const isDarkModeEnabled =
+    userCookies.get("isDarkModeEnabled")?.value || "light";
   return (
-    <html lang="uk">
+    <html lang="uk" className={isDarkModeEnabled === "true" ? "dark" : ""}>
       <meta property="og:type" content="article" />
       <meta
         property="og:title"

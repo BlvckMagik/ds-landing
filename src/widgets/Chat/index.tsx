@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
-
-import { apiInstance } from "@/src/entities/gateway";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
@@ -21,40 +17,7 @@ interface ChatMessage {
   __v: number;
 }
 
-const Chat = () => {
-  const router = useRouter();
-  const params = useParams();
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const checkAuth = () => {
-      if (window.localStorage.getItem("role") !== "admin") {
-        router.push("/404");
-        return;
-      }
-    };
-
-    const getChatHistory = async () => {
-      try {
-        const response = await apiInstance.get(`/chat/${params.userId}`);
-        setChatHistory(response.data);
-      } catch (error) {
-        console.error("Error fetching chat history:", error);
-        setError("Помилка завантаження історії чату");
-      }
-    };
-
-    checkAuth();
-    if (params.userId) {
-      getChatHistory();
-    }
-  }, [params.userId, router]);
-
-  if (error) {
-    return <div className="text-center text-red-500">{error}</div>;
-  }
-
+const Chat = ({ chatHistory }: { chatHistory: ChatMessage[] }) => {
   return (
     <section className="h-full p-12 text-gray-900 lg:p-24 dark:bg-gray-900 dark:bg-opacity-95">
       <h1 className="mb-16 text-center font-DelaGothicOne text-6xl font-bold text-gray-900">

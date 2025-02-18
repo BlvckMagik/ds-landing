@@ -23,7 +23,7 @@ import {
   subjectsList,
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
-import { apiInstance } from "@/src/entities/gateway";
+import { submitStudentFormAction } from "@/src/actions/submitForm";
 
 const ApplyForm: React.FC = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
@@ -39,8 +39,7 @@ const ApplyForm: React.FC = () => {
     setFormStatus("sending");
 
     const formData = new FormData(e.currentTarget);
-    const formProps = Object.fromEntries(formData);
-    const phone = formProps.number as string;
+    const phone = formData.get("number") as string;
 
     if (!ukrainianPhoneRegex.test(phone)) {
       setPhoneError(
@@ -53,10 +52,7 @@ const ApplyForm: React.FC = () => {
     setPhoneError(null);
 
     try {
-      const response = await apiInstance.post("/telegram/send-message", {
-        ...formProps,
-        type: "student",
-      });
+      const response = await submitStudentFormAction(formData);
 
       if (response.status === 201) {
         setFormStatus("success");

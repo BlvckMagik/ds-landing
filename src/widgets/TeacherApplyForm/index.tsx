@@ -24,7 +24,7 @@ import {
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
 import FileInputButton from "@/src/components/FileInputButton";
-import { apiInstance } from "@/src/entities/gateway";
+import { submitTeacherFormAction } from "@/src/actions/submitForm";
 
 const TeacherApplyForm: React.FC = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
@@ -42,7 +42,6 @@ const TeacherApplyForm: React.FC = () => {
     setFormStatus("sending");
 
     const formData = new FormData(e.currentTarget);
-    formData.append("type", "teacher");
     const phone = formData.get("number") as string;
 
     if (!ukrainianPhoneRegex.test(phone)) {
@@ -55,26 +54,17 @@ const TeacherApplyForm: React.FC = () => {
 
     setPhoneError(null);
 
-    // Додаємо файл до FormData, якщо він є
     if (selectedFile) {
       formData.append("document", selectedFile);
     }
 
     try {
-      const response = await apiInstance.post(
-        "/telegram/send-message",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data", // Вказуємо, що відправляємо FormData
-          },
-        },
-      );
+      const response = await submitTeacherFormAction(formData);
 
       if (response.status === 201) {
         setFormStatus("success");
         formRef.current?.reset();
-        setSelectedFile(null); // Очищаємо вибраний файл
+        setSelectedFile(null);
       } else {
         setFormStatus("error");
       }

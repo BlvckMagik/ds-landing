@@ -33,21 +33,21 @@ const Header = () => {
     if (isDarkModeEnabled) {
       setIsDarkModeEnabled(false);
       document.documentElement.classList.remove("dark");
-      window.localStorage.removeItem("isDarkModeEnabled");
+      document.cookie = "isDarkModeEnabled=false; path=/; max-age=31536000";
     } else {
       setIsDarkModeEnabled(true);
       document.documentElement.classList.add("dark");
-      window.localStorage.setItem("isDarkModeEnabled", "true");
+      document.cookie = "isDarkModeEnabled=true; path=/; max-age=31536000";
     }
   };
 
   useEffect(() => {
-    setIsDarkModeEnabled(!!window.localStorage.getItem("isDarkModeEnabled"));
-    if (window.localStorage.getItem("isDarkModeEnabled")) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    const isDark = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("isDarkModeEnabled="))
+      ?.split("=")[1];
+
+    setIsDarkModeEnabled(isDark === "true");
   }, []);
 
   return (
