@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Dialog,
   DialogPanel,
@@ -22,33 +22,14 @@ import {
 // import { callsToAction, products } from "@/src/entities/constants/header";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useTheme from "@/src/entities/hooks/useTheme";
 
 const Header = () => {
   const pathname = usePathname();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
 
-  const onThemeChange = () => {
-    if (isDarkModeEnabled) {
-      setIsDarkModeEnabled(false);
-      document.documentElement.classList.remove("dark");
-      document.cookie = "isDarkModeEnabled=false; path=/; max-age=31536000";
-    } else {
-      setIsDarkModeEnabled(true);
-      document.documentElement.classList.add("dark");
-      document.cookie = "isDarkModeEnabled=true; path=/; max-age=31536000";
-    }
-  };
-
-  useEffect(() => {
-    const isDark = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("isDarkModeEnabled="))
-      ?.split("=")[1];
-
-    setIsDarkModeEnabled(isDark === "true");
-  }, []);
+  const { isDarkModeEnabled, onThemeChange } = useTheme();
 
   return (
     <header
