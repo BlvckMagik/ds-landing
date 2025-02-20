@@ -35,13 +35,13 @@ const Welcome: React.FC = () => {
           </div>
           <div className="flex flex-col items-center gap-4 md:flex-row">
             <a href="#applyForm">
-              <button className="bg-orangeDark min-h-5 min-w-12 rounded-full px-8 py-3 text-white">
+              <button className="min-h-5 min-w-12 rounded-full bg-orangeDark px-8 py-3 text-white">
                 Записатись
               </button>
             </a>
             <a href="https://t.me/managerDrakoBot" target="_blank">
               <button className="min-h-5 min-w-12 rounded-full bg-greenDark px-8 py-3 text-white">
-                Консультація менеджера
+                Консультація асистента
               </button>
             </a>
           </div>

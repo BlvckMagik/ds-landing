@@ -51,7 +51,9 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="border-b-2 border-b-gray-200 bg-white px-8 md:px-14 lg:px-24 dark:border-b-gray-800 dark:bg-gray-900 dark:bg-opacity-95">
+    <header
+      className={`${mobileMenuOpen ? "hidden" : ""} sticky top-0 z-[100] border-b-2 border-b-gray-200 bg-white px-8 backdrop-blur-[3px] md:px-14 lg:px-24 dark:border-b-gray-800 dark:bg-gray-900 dark:bg-opacity-95`}
+    >
       <nav
         aria-label="Global"
         className="mx-auto flex items-center justify-between px-0 py-6"
