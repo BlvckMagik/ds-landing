@@ -23,13 +23,10 @@ const useTheme = () => {
       .find((row) => row.startsWith("isDarkModeEnabled="))
       ?.split("=")[1];
 
-    console.log("useTheme init effect, cookie value:", isDark);
     setIsDarkModeEnabled(isDark === "true");
   }, []);
 
-  useEffect(() => {
-    console.log("Theme state changed:", isDarkModeEnabled);
-  }, [isDarkModeEnabled]);
+  useEffect(() => {}, [isDarkModeEnabled]);
 
   return { isDarkModeEnabled, onThemeChange };
 };

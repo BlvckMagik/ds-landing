@@ -14,8 +14,6 @@ const Disclosure: React.FC<{
   setIsHintUsed: () => void;
 }> = ({ title, content, setIsHintUsed }) => {
   const onClick = () => {
-    console.log("Hint used");
-
     setIsHintUsed();
     localStorage.setItem("isHintUsed", "true");
   };

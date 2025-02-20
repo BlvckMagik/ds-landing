@@ -16,20 +16,7 @@ export async function submitStudentFormAction(formData: FormData) {
 
 export async function submitTeacherFormAction(formData: FormData) {
   try {
-    console.log("Starting teacher form submission");
-
-    for (const [key, value] of formData.entries()) {
-      console.log(
-        `FormData entry - ${key}:`,
-        value instanceof File
-          ? `File: ${value.name}, size: ${value.size}`
-          : value,
-      );
-    }
-
     formData.append("type", "teacher");
-
-    console.log("Sending request to server...");
 
     const response = await apiInstance.post(
       "/telegram/send-message",
@@ -41,16 +28,8 @@ export async function submitTeacherFormAction(formData: FormData) {
       },
     );
 
-    console.log("Server response:", response.status);
     return { status: response.status };
   } catch (error) {
-    console.error("Detailed error in submitTeacherFormAction:", {
-      error,
-      // @ts-ignore
-      errorMessage: error.message,
-      // @ts-ignore
-      errorStack: error.stack,
-    });
     throw error;
   }
 }
