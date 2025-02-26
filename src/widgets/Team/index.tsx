@@ -7,6 +7,7 @@ import { Carousel, IconButton } from "@material-tailwind/react";
 import { teamMembers } from "@/src/entities/constants/team";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const Team: React.FC = () => {
   const [teamMemberIndex, setTeamMemberIndex] = useState(0);
@@ -38,6 +39,12 @@ const Team: React.FC = () => {
           <div className="w-4/5 text-center text-lg text-grayDark lg:text-left">
             {teamMembers[teamMemberIndex].description}
           </div>
+          <Link
+            href={`/team/${teamMembers[teamMemberIndex].id}`}
+            className="w-fit rounded-full bg-orangeDark px-12 py-3.5 text-base font-bold text-white"
+          >
+            Додатково
+          </Link>
         </motion.div>
         {/* @ts-ignore */}
         <Carousel

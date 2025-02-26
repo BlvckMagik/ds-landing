@@ -1,7 +1,5 @@
 import { apiInstance } from "@/src/entities/gateway";
 import ChatsList from "@/src/widgets/ChatsList";
-import Footer from "@/src/widgets/Footer";
-import Header from "@/src/widgets/Header";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -15,9 +13,7 @@ export default async function Chats() {
   }
   return (
     <>
-      <Header />
       <ChatsList chatsData={response.data} />
-      <Footer />
     </>
   );
 }
