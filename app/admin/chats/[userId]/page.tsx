@@ -1,7 +1,5 @@
 import { apiInstance } from "@/src/entities/gateway";
 import Chat from "@/src/widgets/Chat";
-import Footer from "@/src/widgets/Footer";
-import Header from "@/src/widgets/Header";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -24,9 +22,7 @@ export default async function ChatPage({ params }: PageProps) {
 
   return (
     <>
-      <Header />
       <Chat chatHistory={response.data} />
-      <Footer />
     </>
   );
 }

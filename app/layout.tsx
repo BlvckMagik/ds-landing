@@ -9,6 +9,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { cookies } from "next/headers";
+import Header from "@/src/widgets/Header";
+import Footer from "@/src/widgets/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -78,7 +80,9 @@ export default async function RootLayout({
       <body
         className={`${montserrat.variable} ${delaGothicOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>
