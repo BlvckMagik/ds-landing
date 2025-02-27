@@ -57,7 +57,26 @@ export default async function RootLayout({
     userCookies.get("isDarkModeEnabled")?.value || "light";
   return (
     <html lang="uk" className={isDarkModeEnabled === "true" ? "dark" : ""}>
-      <meta property="og:type" content="article" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon 32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon 16x16.png"
+      />
+      <meta property="og:type" content="website" />
       <meta
         property="og:title"
         content="Drako Schule | Сучасний простір для вивчення мов"
@@ -71,7 +90,7 @@ export default async function RootLayout({
         content="https://res.cloudinary.com/di1lzfsaa/image/upload/v1738929811/drako-schule-banner.jpg"
       />
       <meta property="og:image:alt" content="Drako Schule banner" />
-      <meta property="og:url" content="https://ds-landing-weld.vercel.app/" />
+      <meta property="og:url" content="https://www.drakoschule.com.ua/" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/jpeg" />
