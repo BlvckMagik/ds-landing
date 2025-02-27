@@ -12,7 +12,10 @@ import Link from "next/link";
 const Team: React.FC = () => {
   const [teamMemberIndex, setTeamMemberIndex] = useState(0);
   return (
-    <section id="team" className="bg-gray-50 p-12 lg:p-24 dark:bg-gray-900">
+    <section
+      id="team"
+      className="bg-gray-50 p-12 lg:p-24 2xl:px-[12vw] dark:bg-gray-900"
+    >
       <motion.div className="flex flex-col items-center justify-between lg:flex-row">
         <motion.div
           variants={{
@@ -38,6 +41,24 @@ const Team: React.FC = () => {
           </div>
           <div className="w-4/5 text-center text-lg text-grayDark lg:text-left">
             {teamMembers[teamMemberIndex].description}
+          </div>
+          <div className="flex w-4/5 flex-wrap gap-2 text-center text-lg text-grayDark lg:text-left">
+            {teamMembers[teamMemberIndex].subjects?.map((subject) => (
+              <span
+                key={subject.name}
+                className="rounded-full bg-greenDark px-4 py-2 text-sm text-white"
+              >
+                {subject.name}
+              </span>
+            ))}
+            {teamMembers[teamMemberIndex].studyFormats?.map((format) => (
+              <span
+                key={format}
+                className="rounded-full bg-greenLight px-4 py-2 text-sm text-greenDark"
+              >
+                {format}
+              </span>
+            ))}
           </div>
           <Link
             href={`/team/${teamMembers[teamMemberIndex].id}`}
@@ -133,7 +154,7 @@ const Team: React.FC = () => {
             <Image
               key={i}
               width={640}
-              className=""
+              className="aspect-square object-cover"
               height={640}
               src={member.image}
               alt="main banner"
