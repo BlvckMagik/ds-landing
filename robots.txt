@@ -2,13 +2,15 @@ User-agent: *
 Allow: /
 Sitemap: https://www.drakoschule.com.ua/sitemap.xml
 
+# Search Engines
 User-agent: Googlebot
 Allow: /
-
 User-agent: Bingbot
 Allow: /
+User-agent: DuckDuckBot
+Allow: /
 
-
+# Disallow admin and system directories
 Disallow: /admin/
 Disallow: /cgi-bin/
 Disallow: /wp-admin/
@@ -20,5 +22,11 @@ Disallow: /login
 Disallow: /signup
 Disallow: /user
 Disallow: /404
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
 
-Crawl-delay: 1
+# Performance
+Crawl-delay: 2
+Host: https://www.drakoschule.com.ua
+Clean-param: utm_source&utm_medium&utm_campaign
