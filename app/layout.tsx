@@ -45,6 +45,17 @@ export const metadata: Metadata = {
   title: "Drako Schule | Сучасний простір для вивчення мов",
   description:
     "Drako Schule — це місце, де навчання перетворюється на казку! Ми пропонуємо якісні заняття, цікаву подачу матеріалу та індивідуальний підхід до кожного. Приєднуйтесь до нас та зануртесь у Всесвіт драконів!",
+  keywords:
+    "школа німецької мови, німецька онлайн, вивчення німецької, курси німецької, німецька для дітей, німецька для початківців, Drako Schule",
+  openGraph: {
+    title: "Drako Schule | Сучасний простір для вивчення мов",
+    description:
+      "Drako Schule — це місце, де навчання перетворюється на казку! Ми пропонуємо якісні заняття, цікаву подачу матеріалу та індивідуальний підхід до кожного. Приєднуйтесь до нас та зануртесь у Всесвіт драконів!",
+    url: "https://www.drakoschule.com.ua",
+    siteName: "Drako Schule",
+    locale: "uk_UA",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({
@@ -99,6 +110,23 @@ export default async function RootLayout({
         sizes="16x16"
         href="/favicon 16x16.png"
       />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          name: "Drako Schule",
+          description: "Репетиторський центр німецької мови онлайн",
+          url: "https://www.drakoschule.com.ua",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "Ukraine",
+          },
+          teaches: ["German language", "Deutsche Sprache", "Німецька мова"],
+          keywords:
+            "школа німецької мови, німецька онлайн, вивчення німецької, курси німецької",
+          educationalLevel: "All levels",
+        })}
+      </script>
       <body
         className={`${montserrat.variable} ${delaGothicOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
