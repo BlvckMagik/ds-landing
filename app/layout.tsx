@@ -11,6 +11,7 @@ import "./globals.css";
 import { cookies } from "next/headers";
 import Header from "@/src/widgets/Header";
 import Footer from "@/src/widgets/Footer";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -127,6 +128,23 @@ export default async function RootLayout({
           educationalLevel: "All levels",
         })}
       </script>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-Y6MFLDH3T9"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Y6MFLDH3T9');
+          `,
+        }}
+      />
+
       <body
         className={`${montserrat.variable} ${delaGothicOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
