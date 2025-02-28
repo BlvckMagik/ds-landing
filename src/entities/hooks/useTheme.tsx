@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ITheme } from "@/src/entities/types/theme";
 
-const useTheme = () => {
+const useTheme = (): ITheme => {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState<boolean>(false);
 
   const onThemeChange = () => {

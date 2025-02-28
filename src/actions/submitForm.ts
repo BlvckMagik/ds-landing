@@ -2,9 +2,12 @@
 "use server";
 
 import { apiInstance } from "@/src/entities/gateway";
+import { IFormData } from "@/src/entities/types/forms";
 
-export async function submitStudentFormAction(formData: FormData) {
-  const formProps = Object.fromEntries(formData);
+export async function submitStudentFormAction(
+  formData: FormData,
+): Promise<{ status: number }> {
+  const formProps = Object.fromEntries(formData) as Partial<IFormData>;
 
   const response = await apiInstance.post("/telegram/send-message", {
     ...formProps,
@@ -14,7 +17,9 @@ export async function submitStudentFormAction(formData: FormData) {
   return { status: response.status };
 }
 
-export async function submitTeacherFormAction(formData: FormData) {
+export async function submitTeacherFormAction(
+  formData: FormData,
+): Promise<{ status: number }> {
   try {
     formData.append("type", "teacher");
 

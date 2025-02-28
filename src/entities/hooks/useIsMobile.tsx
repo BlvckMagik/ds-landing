@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { IMediaQuery } from "@/src/entities/types/media";
 
-function useMediaQuery(query: number) {
-  const [matches, setMatches] = useState(false);
+const useMediaQuery = (width: number): boolean => {
+  const [matches, setMatches] = useState<IMediaQuery["matches"]>(false);
 
   useEffect(() => {
     function handleResize() {
-      setMatches(window.innerWidth < query);
+      setMatches(window.innerWidth < width);
     }
 
     handleResize();
@@ -15,9 +16,9 @@ function useMediaQuery(query: number) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [query]);
+  }, [width]);
 
   return matches;
-}
+};
 
 export default useMediaQuery;

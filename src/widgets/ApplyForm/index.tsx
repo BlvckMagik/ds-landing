@@ -24,13 +24,12 @@ import {
   ukrainianPhoneRegex,
 } from "@/src/entities/constants/applyForm";
 import { submitStudentFormAction } from "@/src/actions/submitForm";
+import { FormStatus, IFormError } from "@/src/entities/types/forms";
 
 const ApplyForm: React.FC = () => {
-  const [phoneError, setPhoneError] = useState<string | null>(null);
-  const [errorText, setErrorText] = useState<string | null>(null);
-  const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
+  const [phoneError, setPhoneError] = useState<IFormError["phoneError"]>(null);
+  const [errorText, setErrorText] = useState<IFormError["errorText"]>(null);
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
   const formRef = useRef<HTMLFormElement>(null);
 

@@ -25,15 +25,13 @@ import {
 } from "@/src/entities/constants/applyForm";
 import FileInputButton from "@/src/components/FileInputButton";
 import { submitTeacherFormAction } from "@/src/actions/submitForm";
+import { FormStatus, IFormError } from "@/src/entities/types/forms";
 
 const TeacherApplyForm: React.FC = () => {
-  const [phoneError, setPhoneError] = useState<string | null>(null);
-  const [errorText, setErrorText] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<IFormError["phoneError"]>(null);
+  const [errorText, setErrorText] = useState<IFormError["errorText"]>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
   const formRef = useRef<HTMLFormElement>(null);
 
